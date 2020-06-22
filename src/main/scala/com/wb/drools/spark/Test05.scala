@@ -20,7 +20,7 @@ import scala.collection.mutable.ListBuffer
 
 object Test05 {
 
-  val url = "http://172.16.4.14:8888/kie-server/services/rest/server"
+  val url = "http://XXX:8888/kie-server/services/rest/server"
   val user = "kieserver"
   val password = "kieserver1!"
   val kie_container_id = "test01_1.0.0"
@@ -40,7 +40,7 @@ object Test05 {
     import spark.implicits._
     val df1 = spark.readStream.format("kafka")
       .option("kafka.bootstrap.servers", "localhost:9092")
-      .option("subscribe", "flink_crm_order_ods")
+      .option("subscribe", "XXX")
       .option("startingOffsets", "latest")
       .load()
       .selectExpr("CAST(value AS STRING)")
@@ -64,7 +64,7 @@ object Test05 {
             else classString2 = str
             if ("".equals(classString2)) {
             }
-            val person = TestJavaClass.createStudent("CrmDetailInfo4Stat", classString2)
+            val person = TestJavaClass.createStudent("Person", classString2)
             JSON.parseObject(y.toString, person.getClass)
           }
         )
@@ -108,7 +108,7 @@ object Test05 {
       .sql("select * from test")
       .writeStream.outputMode(OutputMode.Update()).format("kafka")
       .option("kafka.bootstrap.servers", "localhost:9092")
-      .option("topic", "drools_test_result")
+      .option("topic", "XXX")
       .start()
       .awaitTermination()
   }

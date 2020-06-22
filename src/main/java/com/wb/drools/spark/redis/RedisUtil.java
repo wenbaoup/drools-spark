@@ -24,7 +24,7 @@ public class RedisUtil {
         jedisPoolConfig.setMaxTotal(60);
         jedisPoolConfig.setMaxIdle(60);
         jedisPoolConfig.setMinIdle(60);
-        Set<String> sentinels = new HashSet<String>(Arrays.asList(("197.255.20.213:26379,197.255.20.214:26379,197.255.20.215:26379".split(","))));
+        Set<String> sentinels = new HashSet<String>(Arrays.asList(("XXX:26379,XXX:26379,XXX:26379".split(","))));
         jedisSentinelPool =
                 new JedisSentinelPool("mymaster", sentinels, jedisPoolConfig, 1200000, null, 5);
     }
